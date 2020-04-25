@@ -7,9 +7,6 @@ const url = require('url');
 const User = require('../models/user');
 const Summary = require('../models/summary');
 const fetch = require('node-fetch');
-// router.get('/bookResults', (req, res) => {
-//     res.render('bookResults');
-// });
 
 
 
@@ -25,9 +22,10 @@ let currentBookID;
 router.post('/bookResults', ensureAutheticated, (req, res) => {
 
 
-    const searchText = req.query.searchForBook;
+    const searchText = req.body.searchForBook;
+    
     const URL = 'https://www.googleapis.com/books/v1/volumes?q=' + searchText + '&maxResults=40&orderBy=relevance';
-
+    
 
     // request(URL, (err, response, body) => {
     //     if (!err && response.statusCode == 200) {
@@ -43,7 +41,7 @@ router.post('/bookResults', ensureAutheticated, (req, res) => {
                 return res.json();
             })
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 res.render('bookResults', { books: data });
             })
             .catch(err => console.log(err));
@@ -65,7 +63,7 @@ router.get('/bookdetails/:id', (req, res) => {
                 return res.json();
             })
             .then(data => {
-                console.log(data);
+                //console.log(data);
                 res.render('singlebookdetails', { bookdata: data });
             })
             .catch(err => console.log(err));
