@@ -1,0 +1,31 @@
+
+<!-- This is the homepage -->
+
+<!-- render the right navbar  -->
+<% if(isAuthenticated) { %>
+    <% include ./particals/navbarLogout %>
+  <% } else { %>
+    <% include ./particals/navbar %>
+  <% } %>
+  
+
+  <div style="margin-top: 15%;">
+    <div style="text-align: center;">
+  <h1>I learned it by reading BooFast</h1>
+  <br/>
+  <h5>One book at a time</h5>
+  </div>
+  
+  <div style="margin-top: 7%;" class="container">
+    <form class="searchForBook" action="/book/bookResults" method="POST">
+      <div class="md-form active-purple active-purple-2 mb-3">
+            <input style="text-align: center;" type="text" class="form-control" name="searchForBook" placeholder="Search for a book or a author">
+      </div>
+    </form>
+  </div>
+  </div>
+  
+  
+  
+  
+  <% include ./particals/body %>

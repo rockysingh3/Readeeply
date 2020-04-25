@@ -1,0 +1,9 @@
+- start with bookResults.ejs file 
+- comment out all the code you've done so far
+
+
+- if you try to log in without creating a account with an email the error doesn't get displayed "No email in database and so" it just stays on that page
+
+- fix the api call it doesn't display the right books
+
+- when posts a summarie render it under the book 

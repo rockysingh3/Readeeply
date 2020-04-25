@@ -1,0 +1,64 @@
+<% if(isAuth) { %>
+    <% include ./particals/navbarLogout %>
+    <% } else { %>
+    <% include ./particals/navbar %>
+    <% } %>
+    
+    
+    <!-- figure where to add the margin and pull the textarea down -->
+    
+    <script>
+        document.querySelector('#testInput').addEventListener('click', () => {
+            console.log("changed data");
+        })
+    </script>
+    
+        <textarea name="content"  id="editor"></textarea>
+        <!-- <button id="submit">Submit</button> -->
+        <a style="margin-top: 20px;" type="button" href="/book/bookdetails/<%=currentBookID%>" id="submit" class="btn btn-info btn-lg btn-block">Submit</a>
+        <!-- <button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button> -->
+    
+     <!-- JS logic -->
+    <script>
+        let doc = document.querySelector('#editor');
+        let editor = null;
+        ClassicEditor.doc
+        ClassicEditor
+            .create(doc, {
+                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+            })
+            .then(e => {
+                editor = e;
+                console.log(typeOf(editor));
+            })
+    
+            .catch(error => {
+                console.error(error);
+            });
+    
+    
+        
+        document.querySelector('#submit').addEventListener('click', () => {
+            const editorData = editor.getData();
+            //console.log(editorData);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/book/summary', true);
+    
+            //Send the proper header information along with the request
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+            xhr.send(editorData);
+        });
+    </script>
+    
+    <style>
+        .ck-editor__editable {
+            min-height: 300px;
+            
+        }
+        .ck.ck-reset {
+            margin-top: 30%;
+        }
+    </style>
+    
+    <% include ./particals/body %>
