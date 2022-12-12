@@ -16,7 +16,7 @@
     "ejs": "^2.6.1",
     "ejs-lint": "^0.3.0",
     "es6-promise": "^4.2.6",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.15.6",
     "fatch": "^1.2.0",
